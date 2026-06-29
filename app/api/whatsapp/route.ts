@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import twilio from "twilio";
 
+export const runtime = "nodejs";
+
 const client = twilio(
   process.env.TWILIO_ACCOUNT_SID,
   process.env.TWILIO_AUTH_TOKEN
