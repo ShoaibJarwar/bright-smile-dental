@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   },
   description:
     "Premium dental care in Lahore. Expert cosmetic dentistry, orthodontics, implants & more. Book your appointment with Dr. Ayesha Khan today.",
+
   keywords: [
     "dental clinic Lahore",
     "dentist Lahore",
@@ -32,48 +33,55 @@ export const metadata: Metadata = {
     "best dentist Lahore",
     "cosmetic dentistry Pakistan",
   ],
-  authors:  [{ name: "Dr. Ayesha Khan" }],
-  creator:  "Bright Smile Dental Clinic",
-  metadataBase: new URL("https://brightsmile.pk"),
 
-  // ── Favicon & icons ──────────────────────────────────────────
+  authors: [{ name: "Dr. Ayesha Khan" }],
+  creator: "Bright Smile Dental Clinic",
+
+  metadataBase: new URL("https://bright-smile-dental-six.vercel.app/"),
+
+  verification: {
+    google: "orqsH3Gz3_w2F6JbqzZu7uACcO80HtKWNsGTN0iqkUE",
+  },
+
   icons: {
     icon: [
-      { url: "/favicon.svg",        type: "image/svg+xml"  },
-      { url: "/favicon-32x32.png",  sizes: "32x32"         },
-      { url: "/favicon-16x16.png",  sizes: "16x16"         },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", sizes: "16x16" },
     ],
-    apple:    [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
     shortcut: [{ url: "/favicon.svg" }],
   },
+
   manifest: "/site.webmanifest",
-  // ─────────────────────────────────────────────────────────────
 
   openGraph: {
-    type:      "website",
-    locale:    "en_PK",
-    url:       "https://brightsmile.pk",
-    siteName:  "Bright Smile Dental Clinic",
-    title:     "Bright Smile Dental Clinic | Premium Dental Care in Lahore",
+    type: "website",
+    locale: "en_PK",
+    url: "https://bright-smile-dental-six.vercel.app/",
+    siteName: "Bright Smile Dental Clinic",
+    title: "Bright Smile Dental Clinic | Premium Dental Care in Lahore",
     description:
       "Experience world-class dental care in the heart of Lahore. Cosmetic dentistry, orthodontics, implants & preventive care.",
     images: [
       {
-        url:    "/og-image.jpg",
-        width:  1200,
+        url: "/og-image.jpg",
+        width: 1200,
         height: 630,
-        alt:    "Bright Smile Dental Clinic Lahore",
+        alt: "Bright Smile Dental Clinic Lahore",
       },
     ],
   },
+
   twitter: {
-    card:        "summary_large_image",
-    title:       "Bright Smile Dental Clinic | Lahore",
+    card: "summary_large_image",
+    title: "Bright Smile Dental Clinic | Lahore",
     description: "Premium dental care in Lahore by Dr. Ayesha Khan.",
-    images:      ["/og-image.jpg"],
+    images: ["/og-image.jpg"],
   },
+
   robots: {
-    index:  true,
+    index: true,
     follow: true,
   },
 };
