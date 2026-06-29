@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bright-smile-dental.vercel.app/sitemap.xml
+Sitemap: https://bright-smile-dental-six.vercel.app/sitemap.xml
