@@ -4,14 +4,13 @@ import { cn } from "@/lib/utils";
 interface LogoProps {
   className?: string;
   size?: "sm" | "md" | "lg";
-  dark?: boolean;
 }
 
-export default function Logo({ className, size = "md", dark = false }: LogoProps) {
+export default function Logo({ className, size = "md" }: LogoProps) {
   const sizeMap = {
-    sm: { icon: 28, text: "text-lg",    sub: "text-[9px]"  },
-    md: { icon: 36, text: "text-xl",    sub: "text-[10px]" },
-    lg: { icon: 44, text: "text-2xl",   sub: "text-xs"     },
+    sm: { icon: 28, text: "text-lg",  sub: "text-[9px]"  },
+    md: { icon: 36, text: "text-xl",  sub: "text-[10px]" },
+    lg: { icon: 44, text: "text-2xl", sub: "text-xs"     },
   };
   const s = sizeMap[size];
 
@@ -24,7 +23,6 @@ export default function Logo({ className, size = "md", dark = false }: LogoProps
                    group-hover:shadow-lg transition-shadow duration-200"
         style={{ width: s.icon, height: s.icon }}
       >
-        {/* Tooth SVG */}
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -38,23 +36,20 @@ export default function Logo({ className, size = "md", dark = false }: LogoProps
         </svg>
       </div>
 
-      {/* Text */}
+      {/* Text — uses CSS variables so it responds to dark mode automatically */}
       <div className="flex flex-col leading-none">
         <span
-          className={cn(
-            "font-display font-bold tracking-tight",
-            s.text,
-            dark ? "text-white" : "text-slate-900"
-          )}
+          className={cn("font-display font-bold tracking-tight", s.text)}
+          style={{ color: "var(--text)" }}
         >
           Bright Smile
         </span>
         <span
           className={cn(
-            "font-sans font-medium uppercase tracking-widest mt-0.5",
-            s.sub,
-            dark ? "text-primary-200" : "text-primary-500"
+            "font-sans font-semibold uppercase tracking-widest mt-0.5",
+            s.sub
           )}
+          style={{ color: "var(--color-primary)" }}
         >
           Dental Clinic
         </span>

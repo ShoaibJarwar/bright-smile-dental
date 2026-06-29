@@ -24,16 +24,19 @@ export default function BackToTop() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0  }}
           exit={{    opacity: 0, y: 16 }}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.1  }}
           whileTap={{  scale: 0.95 }}
           onClick={scrollToTop}
           aria-label="Back to top"
           className="fixed bottom-24 right-6 z-50 w-11 h-11 rounded-xl
                      flex items-center justify-center cursor-pointer
-                     border border-slate-200 shadow-card
-                     transition-colors duration-200
-                     bg-white text-primary-500 hover:bg-primary-500 hover:text-white
-                     hover:border-primary-500"
+                     border shadow-card transition-colors duration-200
+                     hover:bg-primary-500 hover:text-white hover:border-primary-500"
+          style={{
+            background:  "var(--bg)",
+            borderColor: "var(--border)",
+            color:       "var(--color-primary)",
+          }}
         >
           <ArrowUp size={18} />
         </motion.button>

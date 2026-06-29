@@ -13,7 +13,6 @@ export default function ServicesPreview() {
   return (
     <section className="section-py" style={{ background: "var(--bg)" }}>
       <div className="container-custom">
-        {/* Heading */}
         <AnimatedSection className="mb-14">
           <SectionHeading
             label="What We Offer"
@@ -24,7 +23,6 @@ export default function ServicesPreview() {
           />
         </AnimatedSection>
 
-        {/* Cards grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -38,11 +36,11 @@ export default function ServicesPreview() {
               variants={slideUp}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.25 }}
-              className="group relative rounded-3xl overflow-hidden border
-                         flex flex-col bg-white"
+              className="group relative rounded-3xl overflow-hidden border flex flex-col"
               style={{
+                background:  "var(--bg-surface)",
                 borderColor: "var(--border)",
-                boxShadow: "var(--shadow-card)",
+                boxShadow:   "var(--shadow-card)",
               }}
             >
               {/* Image */}
@@ -61,7 +59,6 @@ export default function ServicesPreview() {
                       "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.45) 100%)",
                   }}
                 />
-                {/* Price badge */}
                 {service.price && (
                   <div
                     className="absolute bottom-3 left-3 flex items-center gap-1.5
@@ -89,8 +86,8 @@ export default function ServicesPreview() {
                       className="flex items-center gap-1 shrink-0 text-xs font-medium
                                  px-2.5 py-1 rounded-lg"
                       style={{
-                        background: "var(--bg-surface)",
-                        color: "var(--text-muted)",
+                        background: "var(--bg-surface-2)",
+                        color:      "var(--text-muted)",
                       }}
                     >
                       <Clock size={11} />
@@ -106,11 +103,13 @@ export default function ServicesPreview() {
                   {service.shortDescription}
                 </p>
 
-                {/* Benefits */}
                 <ul className="space-y-1.5 mb-6">
                   {service.benefits.slice(0, 2).map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-xs"
-                        style={{ color: "var(--text-secondary)" }}>
+                    <li
+                      key={b}
+                      className="flex items-center gap-2 text-xs"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
                       <span
                         className="w-1.5 h-1.5 rounded-full shrink-0"
                         style={{ background: "#0EA5E9" }}
@@ -123,13 +122,14 @@ export default function ServicesPreview() {
                 <Link
                   href={`/services/${service.slug}`}
                   className="inline-flex items-center gap-2 text-sm font-semibold
-                             text-primary-500 hover:text-primary-700 transition-colors
+                             text-primary-500 hover:text-primary-400 transition-colors
                              group/link mt-auto"
                 >
                   Learn more
                   <ArrowRight
                     size={15}
-                    className="transition-transform duration-200 group-hover/link:translate-x-1"
+                    className="transition-transform duration-200
+                               group-hover/link:translate-x-1"
                   />
                 </Link>
               </div>
@@ -137,17 +137,13 @@ export default function ServicesPreview() {
           ))}
         </motion.div>
 
-        {/* View all */}
         <AnimatedSection className="mt-12 text-center">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl
                        border-2 text-sm font-semibold transition-all duration-200
                        hover:bg-primary-500 hover:text-white hover:border-primary-500"
-            style={{
-              borderColor: "var(--border)",
-              color: "var(--text)",
-            }}
+            style={{ borderColor: "var(--border)", color: "var(--text)" }}
           >
             View All Services
             <ArrowRight size={16} />

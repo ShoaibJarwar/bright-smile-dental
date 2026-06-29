@@ -11,10 +11,7 @@ import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export default function DoctorsPreview() {
   return (
-    <section
-      className="section-py"
-      style={{ background: "var(--bg-surface)" }}
-    >
+    <section className="section-py" style={{ background: "var(--bg-surface)" }}>
       <div className="container-custom">
         <AnimatedSection className="mb-14">
           <SectionHeading
@@ -39,10 +36,11 @@ export default function DoctorsPreview() {
               variants={slideUp}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.25 }}
-              className="group rounded-3xl overflow-hidden border bg-white flex flex-col"
+              className="group rounded-3xl overflow-hidden border flex flex-col"
               style={{
+                background:  "var(--bg)",
                 borderColor: "var(--border)",
-                boxShadow: "var(--shadow-card)",
+                boxShadow:   "var(--shadow-card)",
               }}
             >
               {/* Photo */}
@@ -58,20 +56,23 @@ export default function DoctorsPreview() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(180deg, transparent 50%, rgba(15,23,42,0.7) 100%)",
+                      "linear-gradient(180deg, transparent 50%, rgba(15,23,42,0.75) 100%)",
                   }}
                 />
+
                 {/* Available pill */}
                 {doctor.available && (
                   <div
-                    className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5
-                               rounded-full text-xs font-semibold text-white backdrop-blur-sm"
+                    className="absolute top-4 right-4 flex items-center gap-1.5
+                               px-3 py-1.5 rounded-full text-xs font-semibold
+                               text-white backdrop-blur-sm"
                     style={{ background: "rgba(20,184,166,0.85)" }}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                     Accepting patients
                   </div>
                 )}
+
                 {/* Name overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <p className="font-display font-bold text-white text-xl leading-tight">
@@ -85,9 +86,14 @@ export default function DoctorsPreview() {
 
               {/* Body */}
               <div className="p-6 flex flex-col flex-1">
+                {/* Specialization badge */}
                 <div
-                  className="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium mb-3 w-fit"
-                  style={{ background: "var(--bg-surface)", color: "var(--text-muted)" }}
+                  className="inline-flex items-center px-3 py-1 rounded-lg
+                             text-xs font-medium mb-3 w-fit"
+                  style={{
+                    background: "var(--bg-surface-2)",
+                    color:      "var(--text-muted)",
+                  }}
                 >
                   {doctor.specialization} · {doctor.experience}
                 </div>
@@ -99,15 +105,16 @@ export default function DoctorsPreview() {
                   {doctor.bio}
                 </p>
 
-                {/* Expertise tags */}
+                {/* Expertise tags — theme-safe */}
                 <div className="flex flex-wrap gap-2 mb-5">
                   {doctor.expertise.slice(0, 3).map((skill) => (
                     <span
                       key={skill}
-                      className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg font-medium"
+                      className="flex items-center gap-1 text-xs px-2.5 py-1
+                                 rounded-lg font-medium"
                       style={{
-                        background: "#EFF6FF",
-                        color: "#2563EB",
+                        background: "rgba(37,99,235,0.12)",
+                        color:      "#60A5FA",
                       }}
                     >
                       <CheckCircle2 size={10} />
@@ -118,12 +125,13 @@ export default function DoctorsPreview() {
 
                 <Link
                   href="/appointment"
-                  className="block w-full text-center py-3 rounded-xl text-sm font-semibold
-                             border-2 transition-all duration-200 hover:bg-primary-500
-                             hover:text-white hover:border-primary-500 mt-auto"
+                  className="block w-full text-center py-3 rounded-xl text-sm
+                             font-semibold border-2 transition-all duration-200
+                             hover:bg-primary-500 hover:text-white
+                             hover:border-primary-500 mt-auto"
                   style={{
                     borderColor: "var(--border)",
-                    color: "var(--text)",
+                    color:       "var(--text)",
                   }}
                 >
                   Book with {doctor.name.split(" ")[1]}
@@ -137,7 +145,7 @@ export default function DoctorsPreview() {
           <Link
             href="/doctors"
             className="inline-flex items-center gap-2 text-sm font-semibold
-                       text-primary-500 hover:text-primary-700 transition-colors group"
+                       text-primary-500 hover:text-primary-400 transition-colors group"
           >
             View full team profiles
             <ArrowRight

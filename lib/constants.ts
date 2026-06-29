@@ -3,7 +3,7 @@ export const CLINIC = {
   tagline:     "Your Smile, Our Masterpiece",
   description: "Premium dental care in the heart of Lahore, Pakistan.",
   doctor:      "Dr. Ayesha Khan",
-  phone:       "+92 300 1234567",
+  phone:       "+92 303 7224163",
   email:       "info@brightsmile.pk",
   website:     "https://brightsmile.pk",
   address: {

@@ -17,10 +17,11 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       variants={slideUp}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25 }}
-      className="group rounded-3xl overflow-hidden border bg-white flex flex-col"
+      className="group rounded-3xl overflow-hidden border flex flex-col"
       style={{
+        background:  "var(--bg-surface)",
         borderColor: "var(--border)",
-        boxShadow: "var(--shadow-card)",
+        boxShadow:   "var(--shadow-card)",
       }}
     >
       {/* Image */}
@@ -29,7 +30,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           src={service.image}
           alt={service.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500
+                     group-hover:scale-105"
         />
         <div
           className="absolute inset-0"
@@ -72,8 +74,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
               className="flex items-center gap-1 shrink-0 text-xs font-medium
                          px-2.5 py-1 rounded-lg"
               style={{
-                background: "var(--bg-surface)",
-                color: "var(--text-muted)",
+                background: "var(--bg-surface-2)",
+                color:      "var(--text-muted)",
               }}
             >
               <Clock size={11} />
@@ -108,13 +110,14 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         <Link
           href={`/services/${service.slug}`}
           className="inline-flex items-center gap-2 text-sm font-semibold
-                     text-primary-500 hover:text-primary-700 transition-colors
+                     text-primary-500 hover:text-primary-400 transition-colors
                      group/link mt-auto"
         >
           Learn more
           <ArrowRight
             size={15}
-            className="transition-transform duration-200 group-hover/link:translate-x-1"
+            className="transition-transform duration-200
+                       group-hover/link:translate-x-1"
           />
         </Link>
       </div>

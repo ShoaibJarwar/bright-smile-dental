@@ -8,32 +8,38 @@ import { CLINIC } from "@/lib/constants";
 
 export default function CTASection() {
   return (
-    <section className="section-py" style={{ background: "var(--bg-surface)" }}>
+    <section className="section-py" style={{ background: "var(--bg)" }}>
       <div className="container-custom">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="relative rounded-[2.5rem] overflow-hidden px-8 py-16 lg:px-20 lg:py-24 text-center"
+          className="relative rounded-[2.5rem] overflow-hidden
+                     px-8 py-16 lg:px-20 lg:py-24 text-center"
           style={{
-            background: "linear-gradient(135deg, #0C4A6E 0%, #1E40AF 50%, #0E7490 100%)",
+            background:
+              "linear-gradient(135deg, #0C4A6E 0%, #1E40AF 50%, #0E7490 100%)",
           }}
         >
-          {/* Background decoration */}
+          {/* Grid overlay */}
           <div
             className="absolute inset-0 pointer-events-none opacity-20"
             style={{
-              backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)",
+              backgroundImage:
+                "radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)",
               backgroundSize: "28px 28px",
             }}
           />
+          {/* Blobs */}
           <div
-            className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 pointer-events-none"
+            className="absolute -top-24 -right-24 w-96 h-96 rounded-full
+                       opacity-20 pointer-events-none"
             style={{ background: "radial-gradient(circle, #38BDF8, transparent 70%)" }}
           />
           <div
-            className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full opacity-20 pointer-events-none"
+            className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full
+                       opacity-20 pointer-events-none"
             style={{ background: "radial-gradient(circle, #14B8A6, transparent 70%)" }}
           />
 
@@ -89,24 +95,18 @@ export default function CTASection() {
               </a>
             </motion.div>
 
-            {/* Micro trust signals */}
             <motion.div
               variants={slideUp}
               className="flex flex-wrap justify-center gap-6 mt-10"
             >
-              {[
-                "No booking fee",
-                "Same-week appointments",
-                "Flexible payment plans",
-              ].map((point) => (
-                <div
-                  key={point}
-                  className="flex items-center gap-2 text-sm text-primary-200"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
-                  {point}
-                </div>
-              ))}
+              {["No booking fee", "Same-week appointments", "Flexible payment plans"].map(
+                (point) => (
+                  <div key={point} className="flex items-center gap-2 text-sm text-primary-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent-400" />
+                    {point}
+                  </div>
+                )
+              )}
             </motion.div>
           </div>
         </motion.div>

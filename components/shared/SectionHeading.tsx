@@ -25,9 +25,12 @@ export default function SectionHeading({
 
   return (
     <div className={cn("flex flex-col", alignClass, className)}>
-      {label && <span className="section-label">{label}</span>}
+      {label && (
+        <span className="section-label">{label}</span>
+      )}
 
-      <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight"
+      <h2
+        className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight"
         style={{ color: "var(--text)" }}
       >
         {titleGradient ? (

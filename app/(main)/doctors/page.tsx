@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { motion }      from "framer-motion";
-import PageHero        from "@/components/shared/PageHero";
-import DoctorCard      from "@/components/doctors/DoctorCard";
-import CTASection      from "@/components/home/CTASection";
-import SectionHeading  from "@/components/shared/SectionHeading";
-import { doctors }     from "@/data/doctors";
-import { staggerContainer } from "@/lib/animations";
+import PageHero       from "@/components/shared/PageHero";
+import DoctorsList    from "@/components/doctors/DoctorsList";
+import CTASection     from "@/components/home/CTASection";
+import SectionHeading from "@/components/shared/SectionHeading";
+import { doctors }    from "@/data/doctors";
 
 export const metadata: Metadata = {
   title: "Our Doctors",
@@ -14,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const credentials = [
-  { value: "15+",  label: "Specialist Dentists"     },
-  { value: "FCPS", label: "Board Certification"      },
-  { value: "3",    label: "International Fellowships"},
-  { value: "100%", label: "Continuing Education"     },
+  { value: "15+",  label: "Specialist Dentists"      },
+  { value: "FCPS", label: "Board Certification"       },
+  { value: "3",    label: "International Fellowships" },
+  { value: "100%", label: "Continuing Education"      },
 ];
 
 export default function DoctorsPage() {
@@ -72,18 +70,7 @@ export default function DoctorsPage() {
             align="center"
             className="mb-14"
           />
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="space-y-8"
-          >
-            {doctors.map((doctor) => (
-              <DoctorCard key={doctor.id} doctor={doctor} layout="list" />
-            ))}
-          </motion.div>
+          <DoctorsList doctors={doctors} />
         </div>
       </section>
 

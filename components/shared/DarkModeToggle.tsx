@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,45 +11,37 @@ interface DarkModeToggleProps {
 }
 
 export default function DarkModeToggle({ className }: DarkModeToggleProps) {
-  const [isDark, setIsDark] = useState(false);
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  // Only render after mount so we know the real theme
+  // This prevents the hydration flash
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const dark = saved === "dark" || (!saved && prefersDark);
-    setIsDark(dark);
-    document.documentElement.classList.toggle("dark", dark);
   }, []);
 
-  const toggle = () => {
-    const next = !isDark;
-    setIsDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
-
   if (!mounted) {
+    // Render an invisible placeholder of the same size
+    // so layout doesn't shift when the button appears
     return (
       <div
-        className={cn(
-          "w-9 h-9 rounded-xl bg-slate-100 animate-pulse",
-          className
-        )}
+        className={cn("w-9 h-9 rounded-xl", className)}
+        aria-hidden="true"
       />
     );
   }
 
+  const isDark = theme === "dark";
+
   return (
     <motion.button
-      onClick={toggle}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       className={cn(
         "relative w-9 h-9 rounded-xl flex items-center justify-center",
-        "transition-colors duration-200 cursor-pointer",
-        "border focus-visible:outline-none focus-visible:ring-2",
+        "transition-colors duration-200 cursor-pointer border",
+        "focus-visible:outline-none focus-visible:ring-2",
         "focus-visible:ring-primary-500 focus-visible:ring-offset-2",
         isDark
           ? "bg-slate-800 border-slate-700 text-yellow-400"

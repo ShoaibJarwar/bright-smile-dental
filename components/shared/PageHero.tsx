@@ -37,23 +37,28 @@ export default function PageHero({
   return (
     <section
       className={cn("relative overflow-hidden", paddingMap[size], className)}
-      style={{
-        background:
-          "linear-gradient(150deg, #F0F9FF 0%, #EFF6FF 55%, #F0FDFA 100%)",
-      }}
+      style={{ background: "var(--bg-surface)" }}
     >
-      {/* Grid pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
-
-      {/* Decorative blobs */}
+      {/* Subtle top accent line */}
       <div
-        className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-20 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-1 pointer-events-none"
+        style={{
+          background: "linear-gradient(90deg, #0EA5E9 0%, #2563EB 50%, #14B8A6 100%)",
+        }}
+      />
+
+      {/* Grid pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+
+      {/* Decorative blobs — use fixed brand colors so they show on both themes */}
+      <div
+        className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10 pointer-events-none"
         style={{
           background: "radial-gradient(circle, #0EA5E9 0%, transparent 70%)",
         }}
       />
       <div
-        className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full opacity-15 pointer-events-none"
+        className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full opacity-10 pointer-events-none"
         style={{
           background: "radial-gradient(circle, #14B8A6 0%, transparent 70%)",
         }}
@@ -112,7 +117,7 @@ export default function PageHero({
             className="font-display font-bold leading-tight tracking-tight mt-1"
             style={{
               fontSize: "clamp(2.2rem, 5vw, 3.75rem)",
-              color: "var(--text)",
+              color:    "var(--text)",
             }}
           >
             {title}{" "}

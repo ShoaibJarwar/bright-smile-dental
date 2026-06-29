@@ -20,13 +20,13 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
         variants={slideUp}
         whileHover={{ y: -4 }}
         transition={{ duration: 0.25 }}
-        className="group grid md:grid-cols-2 rounded-3xl overflow-hidden border bg-white"
+        className="group grid md:grid-cols-2 rounded-3xl overflow-hidden border"
         style={{
+          background:  "var(--bg-surface)",
           borderColor: "var(--border)",
-          boxShadow: "var(--shadow-card)",
+          boxShadow:   "var(--shadow-card)",
         }}
       >
-        {/* Image */}
         <div className="relative h-64 md:h-auto overflow-hidden">
           <Image
             src={post.image}
@@ -37,12 +37,11 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           />
         </div>
 
-        {/* Content */}
         <div className="p-8 flex flex-col justify-center">
           <div className="flex items-center gap-3 mb-4">
             <span
               className="px-3 py-1 rounded-lg text-xs font-semibold"
-              style={{ background: "#EFF6FF", color: "#2563EB" }}
+              style={{ background: "#1E3A8A22", color: "#60A5FA" }}
             >
               {post.category}
             </span>
@@ -57,7 +56,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
 
           <h2
             className="font-display font-bold text-2xl leading-tight mb-3
-                       group-hover:text-primary-600 transition-colors"
+                       group-hover:text-primary-500 transition-colors"
             style={{ color: "var(--text)" }}
           >
             {post.title}
@@ -83,7 +82,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             <Link
               href={`/blog/${post.slug}`}
               className="inline-flex items-center gap-1.5 text-sm font-semibold
-                         text-primary-500 hover:text-primary-700 transition-colors
+                         text-primary-500 hover:text-primary-400 transition-colors
                          group/link"
             >
               Read
@@ -104,13 +103,13 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
       variants={slideUp}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25 }}
-      className="group rounded-3xl overflow-hidden border bg-white flex flex-col"
+      className="group rounded-3xl overflow-hidden border flex flex-col"
       style={{
+        background:  "var(--bg-surface)",
         borderColor: "var(--border)",
-        boxShadow: "var(--shadow-card)",
+        boxShadow:   "var(--shadow-card)",
       }}
     >
-      {/* Image */}
       <div className="relative h-48 overflow-hidden">
         <Image
           src={post.image}
@@ -130,7 +129,6 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
         </div>
       </div>
 
-      {/* Content */}
       <div className="flex flex-col flex-1 p-6">
         <div
           className="flex items-center gap-3 mb-3 text-xs"
@@ -146,7 +144,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
 
         <h3
           className="font-display font-bold text-lg leading-snug mb-3 flex-1
-                     group-hover:text-primary-600 transition-colors"
+                     group-hover:text-primary-500 transition-colors"
           style={{ color: "var(--text)" }}
         >
           {post.title}
@@ -170,7 +168,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           <Link
             href={`/blog/${post.slug}`}
             className="inline-flex items-center gap-1.5 text-sm font-semibold
-                       text-primary-500 hover:text-primary-700 transition-colors
+                       text-primary-500 hover:text-primary-400 transition-colors
                        group/link"
           >
             Read

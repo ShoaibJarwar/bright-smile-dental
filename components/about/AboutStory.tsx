@@ -67,9 +67,11 @@ export default function AboutStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="absolute -right-6 -bottom-6 bg-white rounded-2xl p-5
-                         shadow-card-hover border"
-              style={{ borderColor: "var(--border)" }}
+              className="absolute -right-6 -bottom-6 rounded-2xl p-5 shadow-card-hover border"
+              style={{
+                background:  "var(--bg)",
+                borderColor: "var(--border)",
+              }}
             >
               <p
                 className="font-display font-bold text-4xl"

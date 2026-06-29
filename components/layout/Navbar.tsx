@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, Phone, ChevronDown } from "lucide-react";
+import { useTheme } from "next-themes";
 import { navItems } from "@/data/navigation";
 import Logo from "@/components/shared/Logo";
 import DarkModeToggle from "@/components/shared/DarkModeToggle";
@@ -14,10 +15,14 @@ import { CLINIC } from "@/lib/constants";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
   const [scrolled,   setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdown,   setDropdown]   = useState<string | null>(null);
+  const [mounted,    setMounted]    = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -38,9 +43,13 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
+  useEffect(() => { setMobileOpen(false); }, [pathname]);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
+  const scrolledBg = isDark
+    ? "rgba(12,18,34,0.92)"
+    : "rgba(255,255,255,0.92)";
 
   return (
     <>
@@ -50,13 +59,12 @@ export default function Navbar() {
           scrolled ? "py-3 backdrop-blur-md" : "py-5"
         )}
         style={{
-          background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+          background: scrolled ? scrolledBg : "transparent",
           boxShadow: scrolled ? "var(--shadow-nav)" : "none",
         }}
       >
         <div className="container-custom flex items-center justify-between gap-4">
 
-          {/* Logo */}
           <Logo size="md" />
 
           {/* Desktop Nav */}
@@ -75,8 +83,8 @@ export default function Navbar() {
                         "flex items-center gap-1 px-4 py-2 rounded-xl text-sm font-medium",
                         "transition-colors duration-150 cursor-pointer",
                         pathname.startsWith(item.href) && item.href !== "/"
-                          ? "text-primary-600 bg-primary-50"
-                          : "hover:text-primary-600 hover:bg-slate-50"
+                          ? "text-primary-500 bg-primary-50/20"
+                          : "hover:text-primary-500"
                       )}
                       style={{
                         color:
@@ -102,8 +110,8 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0, scale: 1    }}
                           exit={{    opacity: 0, y: 8, scale: 0.97 }}
                           transition={{ duration: 0.18 }}
-                          className="absolute top-full left-0 mt-2 w-56 rounded-2xl
-                                     border shadow-card-hover overflow-hidden"
+                          className="absolute top-full left-0 mt-2 w-56
+                                     rounded-2xl border shadow-card-hover overflow-hidden"
                           style={{
                             background:  "var(--bg)",
                             borderColor: "var(--border)",
@@ -118,8 +126,8 @@ export default function Navbar() {
                                 className={cn(
                                   "block px-3 py-2.5 rounded-xl text-sm transition-colors",
                                   pathname === child.href
-                                    ? "bg-primary-50 text-primary-600 font-medium"
-                                    : "hover:bg-slate-50 hover:text-primary-600"
+                                    ? "bg-primary-500/10 text-primary-500 font-medium"
+                                    : "hover:bg-primary-500/10 hover:text-primary-500"
                                 )}
                                 style={{
                                   color:
@@ -142,8 +150,8 @@ export default function Navbar() {
                     className={cn(
                       "block px-4 py-2 rounded-xl text-sm font-medium transition-colors duration-150",
                       pathname === item.href
-                        ? "text-primary-600 bg-primary-50"
-                        : "hover:text-primary-600 hover:bg-slate-50"
+                        ? "text-primary-500 bg-primary-500/10"
+                        : "hover:text-primary-500 hover:bg-primary-500/10"
                     )}
                     style={{
                       color:
@@ -161,11 +169,11 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            {/* Phone — desktop only */}
             <a
               href={`tel:${CLINIC.phone}`}
               className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-xl
-                         text-sm font-medium transition-colors hover:bg-slate-50 cursor-pointer"
+                         text-sm font-medium transition-colors
+                         hover:bg-primary-500/10 cursor-pointer"
               style={{ color: "var(--text-secondary)" }}
             >
               <Phone size={15} className="text-primary-500" />
@@ -174,7 +182,6 @@ export default function Navbar() {
 
             <DarkModeToggle />
 
-            {/* Book CTA */}
             <Link
               href="/appointment"
               className="hidden lg:inline-flex items-center px-5 py-2.5 rounded-xl
@@ -187,13 +194,12 @@ export default function Navbar() {
               Book Appointment
             </Link>
 
-            {/* Hamburger */}
             <motion.button
               whileTap={{ scale: 0.92 }}
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
               className="lg:hidden w-9 h-9 rounded-xl flex items-center justify-center
-                         border transition-colors cursor-pointer hover:bg-slate-50"
+                         border transition-colors cursor-pointer hover:bg-primary-500/10"
               style={{
                 borderColor: "var(--border)",
                 color: "var(--text)",

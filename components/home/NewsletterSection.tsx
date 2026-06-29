@@ -14,14 +14,11 @@ export default function NewsletterSection() {
     e.preventDefault();
     if (!email) return;
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1000);
+    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1000);
   };
 
   return (
-    <section className="section-py-sm" style={{ background: "var(--bg)" }}>
+    <section className="section-py-sm" style={{ background: "var(--bg-surface)" }}>
       <div className="container-custom">
         <motion.div
           variants={staggerContainer}
@@ -33,9 +30,7 @@ export default function NewsletterSection() {
           <motion.div
             variants={slideUp}
             className="w-14 h-14 rounded-2xl mx-auto mb-6 flex items-center justify-center"
-            style={{
-              background: "linear-gradient(135deg, #0EA5E9, #2563EB)",
-            }}
+            style={{ background: "linear-gradient(135deg, #0EA5E9, #2563EB)" }}
           >
             <Mail size={24} className="text-white" />
           </motion.div>
@@ -60,7 +55,7 @@ export default function NewsletterSection() {
           {submitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1  }}
+              animate={{ opacity: 1, scale: 1   }}
               className="flex items-center justify-center gap-3 py-4"
             >
               <CheckCircle2 size={24} className="text-accent-500" />
@@ -84,9 +79,9 @@ export default function NewsletterSection() {
                            focus:outline-none focus:ring-2 focus:ring-primary-500
                            focus:border-transparent transition-all"
                 style={{
-                  background: "var(--bg-surface)",
+                  background:  "var(--bg)",
                   borderColor: "var(--border)",
-                  color: "var(--text)",
+                  color:       "var(--text)",
                 }}
               />
               <button

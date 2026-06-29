@@ -10,10 +10,8 @@ import { formatDate } from "@/lib/utils";
 
 export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
-
   const prev = () => setActive((a) => (a === 0 ? testimonials.length - 1 : a - 1));
   const next = () => setActive((a) => (a === testimonials.length - 1 ? 0 : a + 1));
-
   const current = testimonials[active];
 
   return (
@@ -30,38 +28,31 @@ export default function TestimonialsSection() {
         </AnimatedSection>
 
         <div className="max-w-3xl mx-auto">
-          {/* Main testimonial card */}
+          {/* Card */}
           <div
             className="relative rounded-3xl p-8 lg:p-12 border overflow-hidden"
             style={{
-              background: "var(--bg-surface)",
+              background:  "var(--bg-surface)",
               borderColor: "var(--border)",
             }}
           >
             {/* Decorative quote */}
-            <div
-              className="absolute top-6 right-8 opacity-10"
-              style={{ color: "#0EA5E9" }}
-            >
+            <div className="absolute top-6 right-8 opacity-10 text-primary-500">
               <Quote size={80} />
             </div>
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0  }}
+                initial={{ opacity: 0, y: 16  }}
+                animate={{ opacity: 1, y: 0   }}
                 exit={{    opacity: 0, y: -16 }}
                 transition={{ duration: 0.35 }}
               >
                 {/* Stars */}
                 <div className="flex items-center gap-1 mb-6">
                   {[...Array(current.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={18}
-                      className="text-yellow-400 fill-yellow-400"
-                    />
+                    <Star key={i} size={18} className="text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
 
@@ -83,12 +74,12 @@ export default function TestimonialsSection() {
                       {current.location}
                     </p>
                   </div>
-                  <div
+                  <span
                     className="px-3 py-1.5 rounded-xl text-xs font-semibold"
-                    style={{ background: "#EFF6FF", color: "#2563EB" }}
+                    style={{ background: "#1E3A8A22", color: "#60A5FA" }}
                   >
                     {current.service}
-                  </div>
+                  </span>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -105,8 +96,8 @@ export default function TestimonialsSection() {
                   aria-label={`Go to testimonial ${i + 1}`}
                   className="transition-all duration-200 rounded-full cursor-pointer"
                   style={{
-                    width: i === active ? "24px" : "8px",
-                    height: "8px",
+                    width:      i === active ? "24px" : "8px",
+                    height:     "8px",
                     background: i === active ? "#0EA5E9" : "var(--border)",
                   }}
                 />
@@ -115,26 +106,25 @@ export default function TestimonialsSection() {
 
             {/* Arrows */}
             <div className="flex items-center gap-2">
-              <button
-                onClick={prev}
-                aria-label="Previous testimonial"
-                className="w-10 h-10 rounded-xl border flex items-center justify-center
-                           transition-colors hover:bg-primary-50 hover:border-primary-200
-                           cursor-pointer"
-                style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={next}
-                aria-label="Next testimonial"
-                className="w-10 h-10 rounded-xl border flex items-center justify-center
-                           transition-colors hover:bg-primary-50 hover:border-primary-200
-                           cursor-pointer"
-                style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}
-              >
-                <ChevronRight size={18} />
-              </button>
+              {[
+                { fn: prev, label: "Previous", Icon: ChevronLeft  },
+                { fn: next, label: "Next",     Icon: ChevronRight },
+              ].map(({ fn, label, Icon }) => (
+                <button
+                  key={label}
+                  onClick={fn}
+                  aria-label={`${label} testimonial`}
+                  className="w-10 h-10 rounded-xl border flex items-center justify-center
+                             transition-colors hover:bg-primary-500/10
+                             hover:border-primary-500/30 cursor-pointer"
+                  style={{
+                    borderColor: "var(--border)",
+                    color:       "var(--text-muted)",
+                  }}
+                >
+                  <Icon size={18} />
+                </button>
+              ))}
             </div>
           </div>
         </div>

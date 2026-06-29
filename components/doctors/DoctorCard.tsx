@@ -12,19 +12,16 @@ interface DoctorCardProps {
   layout?: "grid" | "list";
 }
 
-export default function DoctorCard({
-  doctor,
-  layout = "grid",
-}: DoctorCardProps) {
+export default function DoctorCard({ doctor, layout = "grid" }: DoctorCardProps) {
   if (layout === "list") {
     return (
       <motion.div
         variants={slideUp}
-        className="group rounded-3xl overflow-hidden border bg-white
-                   flex flex-col sm:flex-row"
+        className="group rounded-3xl overflow-hidden border flex flex-col sm:flex-row"
         style={{
+          background:  "var(--bg-surface)",
           borderColor: "var(--border)",
-          boxShadow: "var(--shadow-card)",
+          boxShadow:   "var(--shadow-card)",
         }}
       >
         {/* Photo */}
@@ -61,10 +58,7 @@ export default function DoctorCard({
             <p className="text-primary-500 text-sm font-medium mt-0.5">
               {doctor.title}
             </p>
-            <p
-              className="text-xs mt-1"
-              style={{ color: "var(--text-muted)" }}
-            >
+            <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
               {doctor.specialization} · {doctor.experience}
             </p>
           </div>
@@ -82,7 +76,7 @@ export default function DoctorCard({
                 key={skill}
                 className="flex items-center gap-1 text-xs px-2.5 py-1
                            rounded-lg font-medium"
-                style={{ background: "#EFF6FF", color: "#2563EB" }}
+                style={{ background: "#1E3A8A22", color: "#60A5FA" }}
               >
                 <CheckCircle2 size={10} />
                 {skill}
@@ -107,16 +101,17 @@ export default function DoctorCard({
     );
   }
 
-  // Grid layout (same as DoctorsPreview card)
+  // Grid layout
   return (
     <motion.div
       variants={slideUp}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25 }}
-      className="group rounded-3xl overflow-hidden border bg-white flex flex-col"
+      className="group rounded-3xl overflow-hidden border flex flex-col"
       style={{
+        background:  "var(--bg-surface)",
         borderColor: "var(--border)",
-        boxShadow: "var(--shadow-card)",
+        boxShadow:   "var(--shadow-card)",
       }}
     >
       <div className="relative h-72 overflow-hidden">
@@ -159,10 +154,7 @@ export default function DoctorCard({
         <div
           className="inline-flex items-center px-3 py-1 rounded-lg text-xs
                      font-medium mb-3 w-fit"
-          style={{
-            background: "var(--bg-surface)",
-            color: "var(--text-muted)",
-          }}
+          style={{ background: "var(--bg-surface-2)", color: "var(--text-muted)" }}
         >
           {doctor.specialization} · {doctor.experience}
         </div>
@@ -180,7 +172,7 @@ export default function DoctorCard({
               key={skill}
               className="flex items-center gap-1 text-xs px-2.5 py-1
                          rounded-lg font-medium"
-              style={{ background: "#EFF6FF", color: "#2563EB" }}
+              style={{ background: "#1E3A8A22", color: "#60A5FA" }}
             >
               <CheckCircle2 size={10} />
               {skill}
@@ -190,9 +182,10 @@ export default function DoctorCard({
 
         <Link
           href="/appointment"
-          className="block w-full text-center py-3 rounded-xl text-sm font-semibold
-                     border-2 transition-all duration-200 hover:bg-primary-500
-                     hover:text-white hover:border-primary-500 mt-auto"
+          className="block w-full text-center py-3 rounded-xl text-sm
+                     font-semibold border-2 transition-all duration-200
+                     hover:bg-primary-500 hover:text-white
+                     hover:border-primary-500 mt-auto"
           style={{ borderColor: "var(--border)", color: "var(--text)" }}
         >
           Book with {doctor.name.split(" ")[1]}
