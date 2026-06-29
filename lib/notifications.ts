@@ -51,8 +51,8 @@ export async function notifyAll(params: {
   const emailFailed = results[0].status === "rejected";
   const waFailed    = results[1].status === "rejected";
 
-  if (emailFailed) console.error("Email failed:", results[0].reason);
-  if (waFailed)    console.error("WhatsApp failed:", results[1].reason);
+  if (emailFailed) console.error("Email failed:", (results[0] as PromiseRejectedResult).reason);
+  if (waFailed)    console.error("WhatsApp failed:", (results[1] as PromiseRejectedResult).reason);
 
   // Only throw if BOTH failed
   if (emailFailed && waFailed) {
