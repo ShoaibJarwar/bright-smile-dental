@@ -5,7 +5,7 @@ export const CLINIC = {
   doctor:      "Dr. Ayesha Khan",
   phone:       "+92 303 7224163",
   email:       "info@brightsmile.pk",
-  website:     "https://brightsmile.pk",
+  website:     "https://bright-smile-dental-six.vercel.app/",
   address: {
     street:  "12-A, Gulberg III",
     city:    "Lahore",

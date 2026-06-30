@@ -177,7 +177,7 @@ export default function Navbar() {
               style={{ color: "var(--text-secondary)" }}
             >
               <Phone size={15} className="text-primary-500" />
-              {CLINIC.phone}
+              CALL US
             </a>
 
             <DarkModeToggle />
