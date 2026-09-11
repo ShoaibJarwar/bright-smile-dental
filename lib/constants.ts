@@ -4,7 +4,7 @@ export const CLINIC = {
   description: "Premium dental care in the heart of Lahore, Pakistan.",
   doctor:      "Dr. Ayesha Khan",
   phone:       "+92 303 7224163",
-  email:       "info@brightsmile.pk",
+  email:       "mshoaibjarwar1256@gmail.com",
   website:     "https://bright-smile-dental-six.vercel.app/",
   address: {
     street:  "12-A, Gulberg III",
@@ -24,7 +24,7 @@ export const CLINIC = {
     youtube:   "https://youtube.com/@brightsmile",
   },
   whatsapp: {
-    number:  "923001234567",
+    number:  "923037224163",
     message: "Hello! I'd like to book a dental appointment.",
   },
 } as const;
